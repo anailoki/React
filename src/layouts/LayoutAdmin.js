@@ -1,15 +1,13 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import "./LayoutAdmin.scss";
-import routes from '../config/routes';
 
 export default function LayoutAdmin(props) {
 
    const { routes } = props;
    const { Header, Content, Footer} = Layout;
-  // console.log(props);
 
    return (
       <Layout>
@@ -17,7 +15,7 @@ export default function LayoutAdmin(props) {
          <Layout>
             <Header>Header...</Header>
             <Content>
-              <LoadRouter routes={routes} />
+              <LoadRoutes routes={routes} />
             </Content>
             <Footer>
                Ana Lidia Iloki
@@ -27,13 +25,18 @@ export default function LayoutAdmin(props) {
    )
 }
 
-function LoadRouter({ routes }) {
-   return routes.map((route, index) => (
-      <Route
-         key={index}
-         path={route.path}
-         exact={route.exact}
-         component={route.component}
-      />
-   ));
+function LoadRoutes({ routes }) {
+
+   return(
+      <Switch>
+         {routes.map((route, index) => (
+            <Route
+               key={index}
+               path={route.path}
+               exact={route.exact}
+               component={route.component}
+            />
+         ))}
+      </Switch>
+   )
 }
