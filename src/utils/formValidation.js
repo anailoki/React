@@ -4,10 +4,10 @@ export function minLengthValidation(inputData, minLenght) {
    removeClassErrorSuccess(inputData);
 
    if(value.length >= minLenght) {
-      inputData.classList.add('success');
+      inputData.classList.add('input-success');
       return true;
-   } else {
-      inputData.classList.add("error")
+   } else if(value.length < minLenght && value !== "") {
+      inputData.classList.add("input-error")
       return false;
    }
 }
@@ -22,17 +22,17 @@ export function emailValidation(inputData) {
    const resultValidation = emailValid.test(value);
 
    if(resultValidation){
-      inputData.classList.add('success');
+      inputData.classList.add('input-success');
       return true;
    }else{
-      inputData.classList.add("error")
+      inputData.classList.add("input-error")
       return false;
    }
 }
 
 
 function removeClassErrorSuccess(inputData) {
-   inputData.classList.remove("success");
-   inputData.classList.remove("error");
+   inputData.classList.remove("input-success");
+   inputData.classList.remove("input-error");
 
 }

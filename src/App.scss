@@ -1,7 +1,9 @@
 @import "./scss/index.scss";
 
-.app{
-    h1{
-        color: $primary-color;
-    }
+.input-success {
+    border-bottom: 1px solid $success !important;
+}
+
+.input-error {
+    border-bottom: 1px solid $error !important;
 }
